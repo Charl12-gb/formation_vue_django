@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Order</title>
+</head>
+<body>
+    <h1>Create a New Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="dish">Customer name:</label>
+        <input type="text" name="customer_name"><br>
+        <label for="dish">Select a Dish:</label>
+        <select name="dish" id="dish">
+            {% for dish in dishes %}
+                <option value="{{ dish.id }}">{{ dish.name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="dish">Select a Sauce:</label>
+        <select name="sauce" id="sauce">
+            <option value>Select Sauce</option>
+            {% for sauce in sauces %}
+                <option value="{{ sauce.id }}">{{ sauce.name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="dish">Select a Beverage:</label>
+        <select name="beverage" id="beverage">
+            <option value>Select Beverage</option>
+            {% for beverage in beverages %}
+                <option value="{{ beverage.id }}">{{ beverage.name }}</option>
+            {% endfor %}
+        </select><br>
+        <!-- Add similar fields for sauce and beverage selection -->
+        <button type="submit">Create Order</button>
+    </form>
+</body>
+</html>

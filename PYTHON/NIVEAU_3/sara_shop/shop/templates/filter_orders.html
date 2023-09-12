@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Orders</title>
+</head>
+<body>
+    <h1>Filter Orders by Customer and Dish</h1>
+    <form method="get">
+        <label for="status">Select Status:</label>
+        <select name="status" id="status">
+            <option value="processed">Processed</option>
+            <option value="not_processed">Not Processed</option>
+        </select>
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" name="customer_name" id="customer_name">
+        <button type="submit">Filter</button>
+    </form>
+    
+    <h2>Filtered Orders</h2>
+    <ul>
+        {% for order in orders %}
+            <li>
+                Order ID: {{ order.id }} | 
+                Customer: {{ order.customer_name }} | 
+                Dish: {{ order.dish.name }} | 
+                Status: {{ order.processed }}
+            </li>
+        {% empty %}
+            <p>No orders match the filter criteria.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
